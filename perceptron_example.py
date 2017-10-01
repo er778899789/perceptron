@@ -1,13 +1,13 @@
 #! /usr/bin/env python  
 #coding=utf-8  
 import numpy as np  
-#感知器分类的学习  
+#感知器分類的學習  
 class Perceptron:  
     ''''' 
-    eta:学习率 
-    n_iter:权重向量的训练次数 
-    w_:权重向量 
-    errors_:记录神经元判断出错的次数 
+    eta:學習速率
+    n_iter:權重向量的訓練次數 
+    w_:權重向量 
+    errors_:記錄判断出錯的次數
      
     '''  
     def __init__(self,eta=0.01,n_iter=10):  
@@ -16,11 +16,11 @@ class Perceptron:
           
     def fit(self,X,y):  
         ''''' 
-        输入训练数据X，训练神经元，X输入样本，y为样本分类 
+        輸入訓練數據X，訓練神經元，X輸入樣本，y樣本分類 
         x=[[1,2],[4,5]] 
         y=[-1,1] 
         '''  
-        #初始化权重向量,加1是因为W0  
+        #初始化權重向量,加1是因為W0  
         self.w_=np.zeros(1+X.shape[1])  
         #print(self.w_)#w_=[0,0,0]  
         self.errors_=[]  
@@ -30,20 +30,20 @@ class Perceptron:
             ''''' 
             zip(X,y)=[[1,2,-1],[4,5,1]] 
             '''  
-            for xi,target in zip(X,y):#每次迭代使用一个样本去更新W  
-                #相当于update=$*(y-y'),这里使用预测的结果进行误差判断  
+            for xi,target in zip(X,y):#每次遞迴使用一个樣本去更新W  
+                #相当于update=$*(y-y'),這裡使用預測的結果進行誤差判斷  
                 update=self.eta*(target-self.predict(xi))  
                 ''''' 
                 xi是一个向量[1,2] 
-                update是一个数字 
-                update*xi等价于 
+                update是一個數字 
+                update*xi等於
                 w1'=x1*update;w2'=x2*update 
                 '''  
                 self.w_[1:]+=update*xi  
                 self.w_[0]+=update*1  
-                #打印更新的W_  
+                #印出更新的W_  
                 #print self.w_  
-                #统计 判断的正确与否次数  
+                #統計 判斷正確與否的次數  
                 errors+=int(update!=0)  
                 self.errors_.append(errors)  
                   
@@ -54,7 +54,7 @@ class Perceptron:
         '''  
         return np.dot(X,self.w_[1:])+self.w_[0]*1  
       
-    def predict(self,X):#相当于sign()函数  
+    def predict(self,X):#相當於sign()函数  
         ''''' 
         y>=0--->1 
         y<0---->-1 
