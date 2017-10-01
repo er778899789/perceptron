@@ -32,7 +32,7 @@ class Perceptron:
             zip(X,y)=[[1,2,-1],[4,5,1]] 
             '''  
             for xi,target in zip(X,y):#每次遞迴使用一个樣本去更新W  
-                #相当于update=$*(y-y'),這裡使用預測的結果進行誤差判斷  
+                #相當於update=$*(y-y'),這裡使用預測的結果進行誤差判斷  
                 update=self.eta*(target-self.predict(xi))  
                 ''''' 
                 xi是一个向量[1,2] 
