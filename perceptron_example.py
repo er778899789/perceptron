@@ -20,7 +20,8 @@ class Perceptron:
         x=[[1,2],[4,5]] 
         y=[-1,1] 
         '''  
-        #初始化權重向量,加1是因為W0  
+        #初始化權重向量,加1是因為W0
+        #X.shape為陣列之形狀
         self.w_=np.zeros(1+X.shape[1])  
         #print(self.w_)#w_=[0,0,0]  
         self.errors_=[]  
